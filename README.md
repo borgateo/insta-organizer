@@ -1,4 +1,5 @@
-
+# insta-organizer
+single-page webapp that pulls data from Instragram
 
 
 1. Start the server:
@@ -10,5 +11,4 @@
 `$ python -m SimpleHTTPServer`
 
 Go to localhost:8000 using your favourite browser
-
 
