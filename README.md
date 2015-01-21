@@ -1,6 +1,7 @@
 # insta-organizer
-single-page webapp that pulls data from Instragram
+Single-page webapp that pulls data from Instragram
 
+==== WIP ====
 
 1. Start the server:
 `$ node server/server.js`
