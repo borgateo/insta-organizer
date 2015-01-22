@@ -26,6 +26,7 @@ gulp.task('minify-js', ['partials'], function() {
     // 'client/app/libs/sweet-alert.js',
     paths.src + '/app/app.js',
     paths.tmp + '/partials/templateCacheHtml.js',
+    paths.src + '/app/configs/*.js',
     paths.src + '/app/controllers/*.js',
     paths.src + '/app/services/*.js',
     paths.src + '/app/javascripts/directives/*.js'

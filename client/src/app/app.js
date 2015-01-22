@@ -1,11 +1,14 @@
-
-
+/**
+* app.js
+* -----------
+* Angular app routes
+*/
 angular.module('Instagram', [
   'ngRoute', 
   'ngMessages', 
-  'satellizer'
+  'satellizer',
   ])
-  .config(function($routeProvider, $authProvider) {
+  .config(function( $routeProvider, $authProvider, appConfig ) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
@@ -25,18 +28,13 @@ angular.module('Instagram', [
       })
       .otherwise('/');
     
-    var env = {
-      server: 'http://localhost:3000',
-      client: 'http://localhost:8000'
-    };
-
-    $authProvider.loginUrl  = env.server + '/auth/login';
-    $authProvider.signupUrl = env.server + '/auth/signup';
+    $authProvider.loginUrl  = appConfig.env.server + '/auth/login';
+    $authProvider.signupUrl = appConfig.env.server + '/auth/signup';
     $authProvider.oauth2({
       name: 'instagram',
-      url: env.server + '/auth/instagram',
-      redirectUri: env.client,
-      clientId: 'dfce040bd3e74f08a7dd4c7c32680d60',
+      url: appConfig.env.server + '/auth/instagram',
+      redirectUri: appConfig.env.client,
+      clientId: appConfig.env.instClientId,
       requiredUrlParams: ['scope'],
       scope: ['likes', 'comments', 'relationships'],
       scopeDelimiter: '+',
@@ -45,6 +43,6 @@ angular.module('Instagram', [
   })
   .run(function( $rootScope, $window, $auth ) {
     if ( $auth.isAuthenticated() ) {
-      $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+      $rootScope.currentUser = JSON.parse( $window.localStorage.currentUser );
     }
   });
