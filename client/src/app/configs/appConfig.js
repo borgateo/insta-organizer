@@ -6,8 +6,7 @@
 angular.module('Instagram')
   .constant('appConfig', (function() {
 
-    // TODO: create a gulp task to build for prod or dev
-    var isDev      = true;  // false;
+    var isDev      = process.env.isDev || true;
     var enviroment = {};
 
     if ( isDev ) {
