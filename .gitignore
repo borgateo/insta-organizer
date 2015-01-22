@@ -16,7 +16,10 @@ build/Release
 # temp folder used by Gulp
 .tmp
 
-node_modules
-bower_components
+# divshot cache (host for the client)
+.divshot-cache
 
 client/dist
+
+node_modules
+bower_components
