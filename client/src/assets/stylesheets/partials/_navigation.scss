@@ -1,0 +1,34 @@
+.navbar {
+  font-weight: 800;
+  font-size: 1rem;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #ffffff;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover, 
+.navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #74cfae;
+}
+
+.navbar-brand {
+  font-size: 3.6em;
+  font-family: $font-serif;
+}
+
+
+
+.navbar-nav > .profile-pic {
+  a {
+    padding: 0 20px 0 15px;
+  }
+  .img-rounded {
+    border-radius: 40%;
+    width: 60px;
+  }
+  &:hover .img-rounded {
+    z-index: -1;
+  }
+}
