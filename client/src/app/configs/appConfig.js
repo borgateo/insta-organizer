@@ -6,7 +6,7 @@
 angular.module('Instagram')
   .constant('appConfig', (function() {
 
-    var isDev      = process.env.isDev || true;
+    var isDev      = process.env.isDev || true; // on prod the Config Variable is at false
     var enviroment = {};
 
     if ( isDev ) {
