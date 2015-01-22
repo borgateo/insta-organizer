@@ -216,23 +216,27 @@ app.post('/auth/instagram', function(req, res) {
   });
 });
 
-app.get('/api/feed', isAuthenticated, function(req, res) {
+app.get('/api/feed', isAuthenticated, function( req, res ) {
 
   console.log('feeeeeed');
 
-  var feedUrl = 'https://api.instagram.com/v1/users/self/feed?access_token=' + req.user.accessToken;
-  var params = { 'access_token': req.user.accessToken };
+  var feedUrl = 'https://api.instagram.com/v1/users/self/feed';
+  var params  = { 
+    'access_token': req.user.accessToken, 
+    'count': 30
+  };
 
   console.log('req', req.user.accessToken)
 
-  request.get({ url: feedUrl, json: true }, function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      res.send(body.data);
+  request.get({ url: feedUrl, qs: params, json: true }, function( error, response, body ) {
+    if ( !error && response.statusCode == 200 ) {
+      console.log('data', body.data)
+      res.send( body.data );
     }
   });
 });
 
-app.get('/api/media/:id', isAuthenticated, function(req, res) {
+app.get('/api/media/:id', isAuthenticated, function( req, res ) {
   var mediaUrl = 'https://api.instagram.com/v1/media/' + req.params.id;
   var params = { access_token: req.user.accessToken };
 
