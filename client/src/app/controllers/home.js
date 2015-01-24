@@ -1,6 +1,6 @@
 angular.module('Instagram')
   .controller('HomeCtrl', 
-    function( $rootScope, $scope, $window, $auth, apiSrv, wallMdl ) {
+    function( $rootScope, $scope, $window, $auth, apiSrv ) {
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
@@ -28,4 +28,3 @@ angular.module('Instagram')
 
     initialize();
   });
-  

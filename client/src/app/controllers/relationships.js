@@ -44,11 +44,11 @@ angular.module('Instagram')
           type: 'followingBack',
           active: false
         }, {
-          title: 'You not following back',
+          title: 'You Not following back',
           type: 'youNotFollowingBack',
           active: false
         }, {
-          title: 'Them Not following back',
+          title: 'They Not following back',
           type: 'theyNotFollowingBack',
           active: false
         }
