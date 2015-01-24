@@ -40,8 +40,16 @@ angular.module('Instagram')
           active: false
         },
         { 
-          title: 'Not following back',
-          type: 'notFollowingBack',
+          title: 'Following back',
+          type: 'followingBack',
+          active: false
+        }, {
+          title: 'You not following back',
+          type: 'youNotFollowingBack',
+          active: false
+        }, {
+          title: 'Them Not following back',
+          type: 'theyNotFollowingBack',
           active: false
         }
       ];

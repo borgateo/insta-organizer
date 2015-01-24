@@ -24,15 +24,15 @@ angular.module('Instagram')
         var ArrayCount = arguments.length;
         var areEqualFunction = _.isEqual;
 
-        if(typeof LastArgument === "function") {
+        if( typeof LastArgument === "function" ) {
             areEqualFunction = LastArgument;
             ArrayCount--;
         }
 
-        for(var i = 1; i < ArrayCount ; i++) {
+        for ( var i = 1; i < ArrayCount ; i++ ) {
             var array = arguments[i];
             Results = intersectionObjects2(Results, array, areEqualFunction);
-            if(Results.length === 0) break;
+            if ( Results.length === 0 ) break;
         }
         return Results;
       }
@@ -44,25 +44,64 @@ angular.module('Instagram')
       relationshipsMdl.prototype.flush = function() {
         this.follows          = [];
         this.followedBy       = [];
-        this.notFollowingBack = [];  // I follow them, they don't me
-        this.notFollowing     = [];  // I don't follow them, they do me
+        this.followingBack    = [];  // I follow them, they follow me
+        this.youNotFollowingBack = [];  // I don't follow them
+        this.theyNotFollowingBack = [];  // they don't me follow me
         return this;
       };
 
-      relationshipsMdl.prototype.updateNotFollowingBack = function() {
-        if ( this.follows.length && this.followedBy.length ) {
-          // calculate the intersection
-          this.notFollowingBack = intersectionObjects(this.follows, this.followedBy, function( item1, item2 ) {
-            return item1.id === item2.id;
-          });
+      relationshipsMdl.prototype.updateYouNotFollowingBack = function() {
+        if ( !this.follows.length || !this.followedBy.length ) {
+          return;
         }
-      }
+        var bIds = {}
+        this.follows.forEach(function(obj){
+            bIds[obj.id] = obj;
+        });
+
+        // Return all elements in A, unless in B
+        this.youNotFollowingBack = this.followedBy.filter(function(obj){
+            return !(obj.id in bIds);
+        });
+      };
+
+      relationshipsMdl.prototype.updateTheyNotFollowingBack = function() {
+        if ( !this.follows.length || !this.followedBy.length ) {
+          return;
+        }
+        var bIds = {}
+        this.followedBy.forEach(function(obj){
+            bIds[obj.id] = obj;
+        });
+
+        // Return all elements in A, unless in B
+        this.theyNotFollowingBack = this.follows.filter(function(obj){
+            return !(obj.id in bIds);
+        });
+      };
+
+
+      relationshipsMdl.prototype.updateFollowingBack = function() {
+        if ( !this.follows.length || !this.followedBy.length ) {
+          return;
+        }
+        // calculate the intersection
+        this.followingBack = intersectionObjects(
+          this.follows, 
+          this.followedBy, 
+          function( item1, item2 ) {
+            return item1.id === item2.id;
+          }
+        );
+      };
 
       relationshipsMdl.prototype.updateFollows = function( data ) {
         this.follows.length = 0;
         this.follows        = data;
 
-        this.updateNotFollowingBack();
+        this.updateFollowingBack();
+        this.updateYouNotFollowingBack();
+        this.updateTheyNotFollowingBack();
         return this;
       };
 
@@ -70,7 +109,9 @@ angular.module('Instagram')
         this.followedBy.length = 0;
         this.followedBy        = data;
 
-        this.updateNotFollowingBack();
+        this.updateFollowingBack();
+        this.updateYouNotFollowingBack();
+        this.updateTheyNotFollowingBack();
         return this;
       };
 
