@@ -9,7 +9,7 @@ angular.module('Instagram')
     $http, 
     appConfig,
     photosMdl,
-    relationshipsMdl
+    usersMdl
   ) {
 
     var service = {
@@ -20,14 +20,14 @@ angular.module('Instagram')
         $http
           .get( appConfig.env.server + '/api/follows/' + id )
           .success(function( response ) {
-            relationshipsMdl.updateFollows( response );
+            usersMdl.updateFollows( response );
           });
       },
       getFollowedBy: function( id ) {
         $http
           .get( appConfig.env.server + '/api/followed-by/' + id )
           .success(function( response ) {
-            relationshipsMdl.updateFollowedBy( response );
+            usersMdl.updateFollowedBy( response );
           });
       },
       getMediaById: function( id ) {
@@ -35,6 +35,9 @@ angular.module('Instagram')
       },
       likeMedia: function( id ) {
         return $http.post( appConfig.env.server + '/api/like', { mediaId: id } );
+      },
+      updateRelationship: function( id, actn ) {
+        return $http.post( appConfig.env.server + '/api/relationship', { userId: id, action: actn } );
       }
     };
 

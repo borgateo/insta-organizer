@@ -1,47 +1,49 @@
 
 
 angular.module('Instagram')
-  .factory('relationshipsMdl', 
+  .factory('usersMdl', 
     function( $rootScope ) {
 
-      var intersectionObjects2 = function(a, b, areEqualFunction) {
-          var Result = [];
+      var intersectionObjects2 = function( a, b, areEqualFunction ) {
+        var Result = [];
 
-          for(var i = 0; i < a.length; i++) {
-              var aElement = a[i];
-              var existsInB = _.any(b, function(bElement) { return areEqualFunction(bElement, aElement); });
-              if(existsInB) {
-                  Result.push(aElement);
-              }
+        for ( var i = 0; i < a.length; i++ ) {
+          var aElement = a[i];
+          var existsInB = _.any(b, function( bElement ) { 
+            return areEqualFunction( bElement, aElement ); 
+          });
+          if ( existsInB ) {
+            Result.push( aElement );
           }
+        }
 
-          return Result;
+        return Result;
       }
 
       var intersectionObjects = function() {
-        var Results = arguments[0];
-        var LastArgument = arguments[arguments.length - 1];
-        var ArrayCount = arguments.length;
+        var Results          = arguments[0];
+        var LastArgument     = arguments[arguments.length - 1];
+        var ArrayCount       = arguments.length;
         var areEqualFunction = _.isEqual;
 
         if( typeof LastArgument === "function" ) {
-            areEqualFunction = LastArgument;
-            ArrayCount--;
+          areEqualFunction = LastArgument;
+          ArrayCount--;
         }
 
         for ( var i = 1; i < ArrayCount ; i++ ) {
-            var array = arguments[i];
-            Results = intersectionObjects2(Results, array, areEqualFunction);
-            if ( Results.length === 0 ) break;
+          var array = arguments[i];
+          Results   = intersectionObjects2( Results, array, areEqualFunction );
+          if ( Results.length === 0 ) break;
         }
         return Results;
       }
 
-      var relationshipsMdl = function() {
+      var UsersMdl = function() {
         this.flush();
       };
 
-      relationshipsMdl.prototype.flush = function() {
+      UsersMdl.prototype.flush = function() {
         this.follows          = [];
         this.followedBy       = [];
         this.followingBack    = [];  // I follow them, they follow me
@@ -50,7 +52,7 @@ angular.module('Instagram')
         return this;
       };
 
-      relationshipsMdl.prototype.updateYouNotFollowingBack = function() {
+      UsersMdl.prototype.updateYouNotFollowingBack = function() {
         if ( !this.follows.length || !this.followedBy.length ) {
           return;
         }
@@ -65,7 +67,7 @@ angular.module('Instagram')
         });
       };
 
-      relationshipsMdl.prototype.updateTheyNotFollowingBack = function() {
+      UsersMdl.prototype.updateTheyNotFollowingBack = function() {
         if ( !this.follows.length || !this.followedBy.length ) {
           return;
         }
@@ -81,7 +83,7 @@ angular.module('Instagram')
       };
 
 
-      relationshipsMdl.prototype.updateFollowingBack = function() {
+      UsersMdl.prototype.updateFollowingBack = function() {
         if ( !this.follows.length || !this.followedBy.length ) {
           return;
         }
@@ -95,7 +97,7 @@ angular.module('Instagram')
         );
       };
 
-      relationshipsMdl.prototype.updateFollows = function( data ) {
+      UsersMdl.prototype.updateFollows = function( data ) {
         this.follows.length = 0;
         this.follows        = data;
 
@@ -105,7 +107,7 @@ angular.module('Instagram')
         return this;
       };
 
-      relationshipsMdl.prototype.updateFollowedBy = function( data ) {
+      UsersMdl.prototype.updateFollowedBy = function( data ) {
         this.followedBy.length = 0;
         this.followedBy        = data;
 
@@ -115,6 +117,20 @@ angular.module('Instagram')
         return this;
       };
 
-      return new relationshipsMdl();
+      UsersMdl.prototype.unfollowUser = function( userId ) {
+        var idx;
+        _.find( this.follows, function( item, followIdx ){ 
+          if ( item.id == userId ){ 
+            idx = followIdx; 
+            return true;
+          }; 
+        });
+        this.follows.splice( idx, 1 );
+        this.updateFollowingBack();
+        this.updateYouNotFollowingBack();
+        this.updateTheyNotFollowingBack();
+      }
+
+      return new UsersMdl();
     }
   );

@@ -53,7 +53,7 @@ module.exports = function( app, auth ) {
     var relUrl = 'https://api.instagram.com/v1/users/' + req.params.id + '/followed-by';
     var params = { access_token: req.user.accessToken };
 
-    request.get({ url: relUrl, qs: params, json: true }, function(error, response, body) {
+    request.get({ url: relUrl, qs: params, json: true }, function( error, response, body ) {
       if ( !error && response.statusCode === 200 ) {
         helpers.fetchNextPages( body, 'followedBy', res );
       }
@@ -61,19 +61,40 @@ module.exports = function( app, auth ) {
 
   });
 
-  app.post('/api/like', auth.isAuthenticated, function(req, res) {
-    var mediaId = req.body.mediaId;
+  app.post('/api/like', auth.isAuthenticated, function( req, res ) {
+    var mediaId     = req.body.mediaId;
     var accessToken = { access_token: req.user.accessToken };
-    var likeUrl = 'https://api.instagram.com/v1/media/' + mediaId + '/likes';
+    var likeUrl     = 'https://api.instagram.com/v1/media/' + mediaId + '/likes';
 
-    request.post({ url: likeUrl, form: accessToken, json: true }, function(error, response, body) {
-      if (response.statusCode !== 200) {
-        return res.status(response.statusCode).send({
+    request.post({ url: likeUrl, form: accessToken, json: true }, function( error, response, body ) {
+      if ( response.statusCode !== 200 ) {
+        return res.status( response.statusCode ).send({
           code: response.statusCode,
           message: body.meta.error_message
         });
       }
-      res.status(200).end();
+      res.status( 200 ).end();
+    });
+  });
+
+  app.post('/api/relationship', auth.isAuthenticated, function( req, res ) {
+    var userId = req.body.userId;
+    var relUrl = 'https://api.instagram.com/v1/users/' + userId + '/relationship';
+    var params = { 
+      'access_token': req.user.accessToken,
+      'action': req.body.action
+    };
+
+    request.post({ url: relUrl, form: params, json: true }, function( error, response, body ) {
+      console.log('responsde', response)
+
+      if ( response.statusCode !== 200 ) {
+        return res.status( response.statusCode ).send({
+          code: response.statusCode,
+          message: body.meta.error_message
+        });
+      }
+      res.status( 200 ).end();
     });
   });
 

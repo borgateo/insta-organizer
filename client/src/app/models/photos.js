@@ -4,21 +4,21 @@ angular.module('Instagram')
   .factory('photosMdl', 
     function( $rootScope ) {
 
-      var WallMdl = function() {
+      var PhotosMdl = function() {
         this.flush();
       };
 
-      WallMdl.prototype.flush = function() {
+      PhotosMdl.prototype.flush = function() {
         this.photos = [];
         return this;
       };
 
-      WallMdl.prototype.update = function (data) {
+      PhotosMdl.prototype.update = function (data) {
         this.flush();
         this.photos = data.photos;
         return this;
       };
 
-      return new WallMdl();
+      return new PhotosMdl();
     }
   );

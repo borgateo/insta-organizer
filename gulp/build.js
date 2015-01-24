@@ -48,16 +48,15 @@ gulp.task('minify-css', ['styles'], function() {
     .pipe(gulp.dest( paths.dist ));
 });
 
-gulp.task('misc', function () {
+gulp.task('html', function () {
   return gulp.src(paths.src + '/*.html')
     .pipe(gulp.dest(paths.dist + '/'));
 });
 
-
-// gulp.task('images', function () {
-//   return gulp.src(paths.src + '/assets/images/**/*')
-//     .pipe(gulp.dest(paths.dist + '/assets/images/'));
-// });
+gulp.task('images', function () {
+  return gulp.src(paths.src + '/assets/images/*')
+    .pipe(gulp.dest(paths.dist + '/images/'));
+});
 
 // gulp.task('fonts', function () {
 //   return gulp.src($.mainBowerFiles())
@@ -71,4 +70,4 @@ gulp.task('misc', function () {
 //     .pipe(gulp.dest(paths.dist + '/'));
 // });
 
-gulp.task('build', ['minify-js', 'minify-css', 'misc']);
+gulp.task('build', ['minify-js', 'minify-css', 'html', 'images']);

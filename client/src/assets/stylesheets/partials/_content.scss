@@ -1,4 +1,5 @@
 .main-view {
+  padding-top: 75px;
   min-height: 580px;
 }
 
@@ -13,7 +14,7 @@
 
 .follower {
   margin-top: 8px;
-  span {
+  a {
     display: none;
     text-align: center;
     left: 0;
@@ -21,13 +22,36 @@
     top: 15px;
     width: 100%;
   }
+  button {
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    left: 14%;
+  }
   &:hover {
     img {
       opacity: .2;  
     }
-    span {
+    a, 
+    button {
       display: block;
     }
   }
+  &.loading {
+    background: url('images/loading.gif') center 25% no-repeat;
+  }
+  &.deleted::after {
+    content: "✓";
+    color: #74cfae;
+    font-size: 2em;
+    position: absolute;
+    left: 45%;
+    top: 25%;
+  }
+  &.loading img,
+  &.deleted img {
+    opacity: .1;
+  }
 }
+
 

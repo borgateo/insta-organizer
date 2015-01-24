@@ -7,7 +7,8 @@ angular.module('Instagram')
     $rootScope, 
     $auth, 
     apiSrv,
-    relationshipsMdl
+    usersMdl,
+    $timeout
   ) {
 
     // console.log( 'currentUser', $rootScope.currentUser );
@@ -23,12 +24,42 @@ angular.module('Instagram')
       $scope.tabs[ index ].active = true;
     }
 
+    $scope.unfollow = function( userId, index ) {
+      // add loading status to the model
+      $scope.relationships.theyNotFollowingBack[ index ].loading = true;
+      
+      apiSrv
+        .updateRelationship( userId, 'unfollow')
+        .success(function() {
+          $scope.relationships.theyNotFollowingBack[ index ].loading = false;
+          $scope.relationships.theyNotFollowingBack[ index ].deleted = true;
+
+          // delete the follower from the list - 2s delay
+          $timeout(function() {
+            $scope.relationships.unfollowUser( userId );  
+          }, 2000);
+        })
+        .error(function( data ) {
+          $scope.relationships.theyNotFollowingBack[ index ].loading = false;
+          $scope.alerts.push(
+            {
+              type: 'danger', 
+              msg: 'Woops! ' + data.message
+            }
+          );
+        });
+    }
+
+    $scope.closeAlert = function( index ) {
+      $scope.alerts.splice( index, 1 );
+    };
+
     var initialize = function() {
       if ( !$auth.isAuthenticated() || !$rootScope.currentUser  ) {
         return;
       }
-
-      $scope.tabs = [
+      $scope.alerts = [];
+      $scope.tabs   = [
         { 
           title: 'Following',
           type: 'follows',
@@ -57,7 +88,7 @@ angular.module('Instagram')
       apiSrv.getFollows( $rootScope.currentUser.instagramId );
       apiSrv.getFollowedBy( $rootScope.currentUser.instagramId );
 
-      $scope.relationships = relationshipsMdl;
+      $scope.relationships = usersMdl;
     }
 
     initialize();
