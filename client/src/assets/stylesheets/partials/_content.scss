@@ -1,0 +1,30 @@
+
+.thumbnail {
+  width: 75%;
+}
+
+.img-more-rounded {
+  border-radius: 40%;
+  width: 100%;
+}
+
+.follower {
+  margin-top: 8px;
+  span {
+    display: none;
+    text-align: center;
+    left: 0;
+    position: absolute;
+    top: 15px;
+    width: 100%;
+  }
+  &:hover {
+    img {
+      opacity: .2;  
+    }
+    span {
+      display: block;
+    }
+  }
+}
+

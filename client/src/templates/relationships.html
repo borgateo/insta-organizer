@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div ng-if="isAuthenticated() && currentUser.username">
+
+    <ul class="nav nav-pills">
+      <li
+        ng-repeat="tab in tabs" 
+        ng-class="{active: tab.active, disabled: tab.disabled}" 
+        heading="{{ tab.title }}"
+      >
+        <a ng-click="selectTab( $index )" href="">
+          {{ tab.title }} ({{ relationships[ tab.type ].length }})
+        </a>
+      </li>
+    </ul>
+
+    <div 
+      ng-repeat="follow in relationships.follows"
+      ng-show="tabs[ 0 ].active"
+      class="follower col-lg-2 col-sm-3 col-xs-4" 
+    >
+      <a href="http://instagram.com/{{ follow.username }}">
+        <img ng-src="{{ follow.profile_picture }}" class="img-rounded img-responsive img-more-rounded">
+        <span>{{ follow.username }}</span>
+      </a>
+    </div>
+
+    <div 
+      ng-repeat="followedBy in relationships.followedBy"
+      ng-show="tabs[ 1 ].active"
+      class="follower col-lg-2 col-sm-3 col-xs-4" 
+    >
+      <a href="http://instagram.com/{{ followedBy.username }}">
+        <img ng-src="{{ followedBy.profile_picture }}" class="img-rounded img-responsive img-more-rounded">
+        <span>{{ followedBy.username }}</span>
+      </a>
+    </div>
+
+    <div 
+      ng-repeat="followedBack in relationships.notFollowingBack"
+      ng-show="tabs[ 2 ].active"
+      class="follower col-lg-2 col-sm-3 col-xs-4" 
+    >
+      <a href="http://instagram.com/{{ followedBack.username }}">
+        <img ng-src="{{ followedBack.profile_picture }}" class="img-rounded img-responsive img-more-rounded">
+        <span>{{ followedBack.username }}</span>
+      </a>
+    </div>
+
+  </div>
+
+</div>

@@ -7,6 +7,7 @@ angular.module('Instagram', [
   'ngRoute', 
   'ngMessages', 
   'satellizer',
+  'ui.bootstrap'
   ])
   .config(function( $routeProvider, $authProvider, appConfig ) {
     $routeProvider
@@ -25,6 +26,10 @@ angular.module('Instagram', [
       .when('/photo/:id', {
         templateUrl: 'views/detail.html',
         controller: 'DetailCtrl'
+      })
+      .when('/relationships', {
+        templateUrl: 'views/relationships.html',
+        controller: 'RelationshipsCtrl'
       })
       .otherwise('/');
     

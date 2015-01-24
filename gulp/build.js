@@ -19,17 +19,20 @@ var banner = ['/**',
 
 gulp.task('minify-js', ['partials'], function() {
   return gulp.src([
+    paths.node  + '/underscore/underscore.js',
     paths.bower + '/angular/angular.js',
     paths.bower + '/angular-route/angular-route.js',
     paths.bower + '/angular-messages/angular-messages.js',
-    paths.src + '/assets/javascripts/satellizer.js',
+    paths.src   + '/assets/javascripts/satellizer.js',
+    paths.bower + '/angular-bootstrap/ui-bootstrap-tpls.js',
     // 'client/app/libs/sweet-alert.js',
-    paths.src + '/app/app.js',
-    paths.tmp + '/partials/templateCacheHtml.js',
-    paths.src + '/app/configs/*.js',
-    paths.src + '/app/controllers/*.js',
-    paths.src + '/app/services/*.js',
-    paths.src + '/app/javascripts/directives/*.js'
+    paths.src   + '/app/app.js',
+    paths.tmp   + '/partials/templateCacheHtml.js',
+    paths.src   + '/app/config/*.js',
+    paths.src   + '/app/models/*.js',
+    paths.src   + '/app/controllers/*.js',
+    paths.src   + '/app/services/*.js',
+    paths.src   + '/app/javascripts/directives/*.js'
   ])
   .pipe($.concat('app.min.js'))
   .pipe($.ngAnnotate())

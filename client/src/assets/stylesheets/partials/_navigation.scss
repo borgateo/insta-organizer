@@ -18,6 +18,15 @@
   font-family: $font-serif;
 }
 
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover, 
+.nav-pills > li.active > a:focus {
+  background-color: #74cfae;
+}
+
+.nav-pills {
+  margin-bottom: 25px;
+}
 
 
 .navbar-nav > .profile-pic {

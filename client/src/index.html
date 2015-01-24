@@ -26,9 +26,10 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/">Home</a></li>
           <li ng-if="!isAuthenticated()"><a href="#/login">Log in</a></li>
           <li class="active" ng-if="!isAuthenticated()"><a href="#/signup">Sign up</a></li>
+          <li ng-if="isAuthenticated()"><a href="#/">Wall</a></li>
+          <li ng-if="isAuthenticated()"><a href="#/relationships">Followers</a></li>
           <li ng-if="isAuthenticated()"><a ng-click="logout()" href="">Logout</a></li>
           <li class="profile-pic" ng-if="isAuthenticated() && currentUser.username">
             <a href="http://instagram.com/{{currentUser.username}}">

@@ -6,7 +6,8 @@
 angular.module('Instagram')
   .constant('appConfig', (function() {
 
-    var isDev      = process.env.isDev || true; // on prod the Config Variable is at false
+    // TODO: set a gulp task to deploy to prod and change this variable
+    var isDev      = true;  // false;
     var enviroment = {};
 
     if ( isDev ) {
