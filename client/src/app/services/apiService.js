@@ -1,15 +1,16 @@
 /**
-* api.js
-* ---------
-* simple factory to get data from the server API
+* services/apiService.js
+* ------------------
+* simple service to get data from the server API
 *
 */
-angular.module('Instagram')
-  .service('apiSrv', function( 
+'use strict';
+
+angular.module('instaOrganizer')
+  .factory('apiService', function( 
     $http, 
     appConfig,
-    photosMdl,
-    usersMdl
+    User
   ) {
 
     var service = {
@@ -20,14 +21,14 @@ angular.module('Instagram')
         $http
           .get( appConfig.env.server + '/api/follows/' + id )
           .success(function( response ) {
-            usersMdl.updateFollows( response );
+            User.updateFollows( response );
           });
       },
       getFollowedBy: function( id ) {
         $http
           .get( appConfig.env.server + '/api/followed-by/' + id )
           .success(function( response ) {
-            usersMdl.updateFollowedBy( response );
+            User.updateFollowedBy( response );
           });
       },
       getMediaById: function( id ) {
@@ -42,5 +43,4 @@ angular.module('Instagram')
     };
 
     return service;
-
   });

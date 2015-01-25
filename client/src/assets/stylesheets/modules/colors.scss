@@ -1,0 +1,11 @@
+
+$green: #74cfae;
+$green-light: lighten($green, 20%);
+
+$link-color: darken($green, 25%);
+$link-color-hover: darken($green, 20%);
+
+$nav-el-bg: $green;
+$pill-el-bg: $green-light;
+
+$index-h2-color: darken($green, 15%);

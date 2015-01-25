@@ -16,22 +16,17 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 centered">
           <h2>Hi. Do you &hearts; Instagram?</h2>
-          <p>instaOrganizer gives you a hand to manage it, at ease.</p>
-        </div>
-        <div class="5u">
-          <ul>
-            <li><a href="#/signup" class="button big icon fa-arrow-circle-right">Ok, let's go</a></li>
-            <li><a href="#/" class="button alt big icon fa-question-circle">More info</a></li>
-          </ul>
+          <h3>instaOrganizer gives you a hand to manage it, at ease.</h3>
         </div>
       </div>
     </div> <!-- /container -->
   </div><!-- /hello -->  
 
-  <div ng-if="isAuthenticated() && !currentUser.username" class="center-form panel">
+  <div ng-if="isAuthenticated() && !currentUser.username" class="panel col-md-6 col-md-offset-3">
     <div class="panel-body">
-      <h5 class="text-center"><i class="ion-link"></i> Link Account</h5>
-      <p>To complete the registration process you must link your Instagram account.</p>
+      <h2>Link Account</h2>
+
+      <p>To complete the registration process you must link your Instagram account :)</p>
       <button class="btn btn-block btn-instagram" ng-click="linkInstagram()">
         <i class="ion-social-instagram"></i> Sign in with Instagram
       </button>
@@ -39,81 +34,3 @@
   </div>
 
 </div>
-
-<!-- 
-
-<div id="green">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 centered">
-          <img src="assets/img/iphone.png" alt="">
-        </div>
-        
-        <div class="col-lg-7 centered">
-          <h3>WHAT WE CAN DO?</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="container">
-    <div class="row centered mt grid">
-      <h3>OUR LATEST WORK</h3>
-      <div class="mt"></div>
-      <div class="col-lg-4">
-        <a href="#"><img src="assets/img/01.jpg" alt=""></a>
-      </div>
-      <div class="col-lg-4">
-        <a href="#"><img src="assets/img/02.jpg" alt=""></a>
-      </div>
-      <div class="col-lg-4">
-        <a href="#"><img src="assets/img/03.jpg" alt=""></a>
-      </div>
-    </div>
-    
-    <div class="row centered mt grid">
-      <div class="mt"></div>    
-      <div class="col-lg-4">
-        <a href="#"><img src="assets/img/04.jpg" alt=""></a>
-      </div>
-      <div class="col-lg-4">
-        <a href="#"><img src="assets/img/05.jpg" alt=""></a>
-      </div>
-      <div class="col-lg-4">
-        <a href="#"><img src="assets/img/06.jpg" alt=""></a>
-      </div>
-    </div>
-    
-    <div class="row mt centered">
-      <div class="col-lg-7 col-lg-offset-1 mt">
-          <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
-      </div>
-      
-      <div class="col-lg-3 mt">
-        <p><button type="button" class="btn btn-theme btn-lg">Email Me!</button></p>
-      </div>
-    </div>
-  </div>
-  
-  <section id="contact"></section>
-  <div id="social">
-    <div class="container">
-      <div class="row centered">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="col-md-3">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-          </div>
-          <div class="col-md-3">
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-          </div>
-          <div class="col-md-3">
-            <a href="#"><i class="fa fa-twitter"></i></a>
-          </div>
-          <div class="col-md-3">
-            <a href="#"><i class="fa fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
-    </div><!-- /container -->
-  </div><!-- /social -->

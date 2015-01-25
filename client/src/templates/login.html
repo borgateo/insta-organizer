@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container main-view">
 
-    <div class="center-form panel">
+    <div class="panel col-md-6 col-md-offset-3">
       <div class="panel-body">
-        <h4 class="text-center"><i class="ion-log-in"></i> Log in</h4>
+        <h2>Log in</h2>
 
         <form name="loginForm" ng-submit="emailLogin()" novalidate>
           <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
@@ -23,7 +23,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-block btn-success" ng-disabled="loginForm.$invalid">Log in</button>
+          <button type="submit" class="btn btn-block btn-primary" ng-disabled="loginForm.$invalid">Log in</button>
 
           <br/>
 
@@ -32,8 +32,7 @@
           </p>
 
           <div class="signup-or-separator">
-            <h6 class="text">or</h6>
-            <hr>
+            <p class="text-center">OR</p>
           </div>
         </form>
         <button class="btn btn-block btn-instagram" ng-click="instagramLogin()">

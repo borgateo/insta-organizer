@@ -1,6 +1,11 @@
-angular.module('Instagram')
+/**
+* controllers/home.js
+*/
+'use strict';
+
+angular.module('instaOrganizer')
   .controller('HomeCtrl', 
-    function( $rootScope, $scope, $window, $auth, apiSrv ) {
+    function( $rootScope, $scope, $window, $auth, apiService ) {
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
@@ -11,7 +16,7 @@ angular.module('Instagram')
         .then(function(response) {
           $window.localStorage.currentUser = JSON.stringify(response.data.user);
           $rootScope.currentUser           = JSON.parse($window.localStorage.currentUser);
-          apiSrv.getFeed().success(function(data) {
+          apiService.getFeed().success(function(data) {
             $scope.photos = data;
           });
         });
@@ -21,10 +26,10 @@ angular.module('Instagram')
       if ( !$auth.isAuthenticated() || !$rootScope.currentUser  ) {
         return;
       }
-      apiSrv.getFeed().success(function( data ) {
+      apiService.getFeed().success(function( data ) {
         $scope.photos = data;
       });
-    }
+    };
 
     initialize();
   });

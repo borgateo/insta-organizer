@@ -25,14 +25,16 @@ gulp.task('minify-js', ['partials'], function() {
     paths.bower + '/angular-messages/angular-messages.js',
     paths.src   + '/assets/javascripts/satellizer.js',
     paths.bower + '/angular-bootstrap/ui-bootstrap-tpls.js',
+    paths.bower + '/angular-loading-bar/build/loading-bar.js',
     // 'client/app/libs/sweet-alert.js',
     paths.src   + '/app/app.js',
     paths.tmp   + '/partials/templateCacheHtml.js',
+    paths.src   + '/app/utils/*.js',
     paths.src   + '/app/config/*.js',
     paths.src   + '/app/models/*.js',
     paths.src   + '/app/controllers/*.js',
     paths.src   + '/app/services/*.js',
-    paths.src   + '/app/javascripts/directives/*.js'
+    paths.src   + '/app/directives/*.js'
   ])
   .pipe($.concat('app.min.js'))
   .pipe($.ngAnnotate())
@@ -42,7 +44,10 @@ gulp.task('minify-js', ['partials'], function() {
 });
 
 gulp.task('minify-css', ['styles'], function() {
-  return gulp.src(paths.tmp + '/**/*.css')
+  return gulp.src([
+    paths.tmp + '/**/*.css',
+    paths.bower + '/angular-loading-bar/build/loading-bar.css'
+  ])
     .pipe($.concat('styles.min.css'))
     //.pipe($.csso())
     .pipe(gulp.dest( paths.dist ));

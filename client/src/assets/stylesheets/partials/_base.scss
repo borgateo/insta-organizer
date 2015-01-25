@@ -44,14 +44,15 @@ p {
 
 /* Links */
 a {
-  color: #5a9f86;
+  text-decoration: underline;
+  color: $link-color;
   word-wrap: break-word;
   @include transition(color 0.1s ease-in, background 0.1s ease-in);
 }
 
 a:hover,
 a:focus {
-  color: #7b7b7b;
+  color: $link-color-hover;
   text-decoration: none;
   outline: 0;
 }

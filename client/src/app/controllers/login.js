@@ -1,7 +1,9 @@
 /**
-* login.js
+* controllers/login.js
 */
-angular.module('Instagram')
+'use strict';
+
+angular.module('instaOrganizer')
   .controller('LoginCtrl', function( $scope, $window, $location, $rootScope, $auth ) {
 
     $scope.instagramLogin = function() {

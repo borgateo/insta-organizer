@@ -1,5 +1,10 @@
-angular.module('Instagram')
-  .controller('SignupCtrl', function($scope, $auth) {
+/**
+* controllers/signup.js
+*/
+'use strict';
+
+angular.module('instaOrganizer')
+  .controller('SignupCtrl', function( $scope, $auth ) {
 
     $scope.signup = function() {
       var user = {
@@ -7,9 +12,9 @@ angular.module('Instagram')
         password: $scope.password
       };
 
-      $auth.signup(user)
-        .catch(function(response) {
-          console.log(response.data);
+      $auth.signup( user )
+        .catch(function( response ) {
+          console.log( response.data );
         });
     };
 

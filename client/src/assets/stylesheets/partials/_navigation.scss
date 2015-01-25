@@ -1,22 +1,32 @@
 .navbar {
   padding-top: 8px;
-  padding-bottom: 8px;
   background-color: #fff;
   font-weight: 400;
   font-size: 1.1rem;
 }
+.navbar-default .navbar-nav > li > a {
+  text-decoration: none;
+}
 
-.navbar-nav > .active > a,
-.navbar-nav > .active > a:hover, 
-.navbar-nav > .active > a:focus {
+/* sometimes bootstrap uses this loooong rules :( */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
   color: #fff;
-  background-color: #74cfae;
+  background-color: $nav-el-bg;
 }
 
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover, 
 .nav-pills > li.active > a:focus {
-  background-color: #74cfae;
+  background-color: $pill-el-bg;
+}
+
+.navbar-default .navbar-nav > .important > a, 
+.navbar-default .navbar-nav > .important > a:hover, 
+.navbar-default .navbar-nav > .important > a:focus {
+  background-color: #EFEFEF;
+  color: $link-color;
 }
 
 .nav-pills {
@@ -25,7 +35,8 @@
 
 .navbar-nav > .profile-pic {
   a {
-    padding: 0 20px 0 15px;
+    padding: 0 20px 0 0;
+    top: -4px;
   }
   .img-rounded {
     border-radius: 40%;
@@ -38,4 +49,9 @@
 
 .brand {
   margin: 0;
+  top: -5px;
+  position: relative;
+  a {
+    text-decoration: none;
+  }
 }

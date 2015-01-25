@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="Instagram">
+<html ng-app="instaOrganizer">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,40 +11,7 @@
   </head>
   <body>
 
-    <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <h1 class="brand">
-            <a href="#/">instaOrganizer</a>
-          </h1>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li ng-if="!isAuthenticated()"><a href="#/login">Log in</a></li>
-            <li class="active" ng-if="!isAuthenticated()"><a href="#/signup">Sign up</a></li>
-            <li ng-if="isAuthenticated()"><a href="#/">Wall</a></li>
-            <li ng-if="isAuthenticated()"><a href="#/relationships">Followers</a></li>
-            <li ng-if="isAuthenticated()"><a ng-click="logout()" href="">Logout</a></li>
-            <li class="profile-pic" ng-if="isAuthenticated() && currentUser.username">
-              <a href="http://instagram.com/{{currentUser.username}}">
-                <img 
-                  class="media-object img-rounded" 
-                  ng-src="{{currentUser.picture}}"
-                  alt="@{{currentUser.username}}"
-                  title="@{{currentUser.username}}"
-                />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+    <navbar></navbar>
     <div ng-view></div>
 
     <footer>

@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container main-view">
 
-  <div class="center-form panel">
+  <div class="panel col-md-6 col-md-offset-3">
     <div class="panel-body">
-      <h4 class="text-center"><i class="ion-person-add"></i> Sign up</h4>
+      <h2>Sign up</h2>
+      
       <form method="post" ng-submit="signup()" name="signupForm">
         <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
           <input class="form-control input-lg" type="email" id="email" name="email" ng-model="email" placeholder="Email" required autofocus>

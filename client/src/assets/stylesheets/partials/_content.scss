@@ -26,7 +26,8 @@
     display: none;
     position: absolute;
     bottom: 30px;
-    left: 14%;
+    left: 15%;
+    width: 70%;
   }
   &:hover {
     img {
@@ -52,6 +53,43 @@
   &.deleted img {
     opacity: .1;
   }
+  &.deleted:hover button {
+    display: none;
+  }
 }
 
 
+#hello {
+  width: 100%;
+  padding-top: 50px;
+  background-image: url('images/background.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  h2 {
+    font-size: 4.5em;
+    font-weight: bold;
+    letter-spacing: -1px;
+    color: $index-h2-color;
+    font-weight: 400;
+    padding-bottom: 0;
+  }
+  h3 {
+    font-size: 2em;
+    font-weight: 100;
+    letter-spacing: -1px;
+    color: darken($index-h2-color, 45%);
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+  .col-lg-8 {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.72);
+  }
+
+}

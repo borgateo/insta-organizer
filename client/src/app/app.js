@@ -3,12 +3,15 @@
 * -----------
 * Angular app routes
 */
-angular.module('Instagram', [
-  'ngRoute', 
-  'ngMessages', 
+'use strict';
+
+angular.module('instaOrganizer', [
+  'ngRoute',
+  'ngMessages',
   'satellizer',
-  'ui.bootstrap'
-  ])
+  'ui.bootstrap', // used for the alert and modal
+  'angular-loading-bar'
+])
   .config(function( $routeProvider, $authProvider, appConfig ) {
     $routeProvider
       .when('/', {
@@ -46,7 +49,7 @@ angular.module('Instagram', [
       authorizationEndpoint: 'https://api.instagram.com/oauth/authorize'
     });
   })
-  .run(function( $rootScope, $window, $auth ) {
+  .run(function( $rootScope, $window, $auth, $route ) {
     if ( $auth.isAuthenticated() ) {
       $rootScope.currentUser = JSON.parse( $window.localStorage.currentUser );
     }

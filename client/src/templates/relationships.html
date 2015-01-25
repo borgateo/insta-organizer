@@ -51,11 +51,15 @@
       ng-repeat="youNotFollowingBack in relationships.youNotFollowingBack"
       ng-show="tabs[ 3 ].active"
       class="follower col-lg-2 col-sm-3 col-xs-4" 
+      ng-class="{'loading': youNotFollowingBack.loading, 'deleted': youNotFollowingBack.deleted}"
     >
       <img ng-src="{{ youNotFollowingBack.profile_picture }}" class="img-rounded img-responsive img-more-rounded">
       <a href="http://instagram.com/{{ youNotFollowingBack.username }}">
         {{ youNotFollowingBack.username }}
       </a>
+      <button ng-click="follow( youNotFollowingBack.id, $index )" class="btn btn-default">
+        follow
+      </button>
     </div>
 
     <div 

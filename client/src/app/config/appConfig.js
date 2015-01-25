@@ -3,7 +3,9 @@
 * ---------------
 * constants used in the app
 */
-angular.module('Instagram')
+'use strict';
+
+angular.module('instaOrganizer')
   .constant('appConfig', (function() {
 
     // TODO: set a gulp task to deploy to prod and change this variable
