@@ -9,7 +9,7 @@ angular.module('instaOrganizer')
   .constant('appConfig', (function() {
 
     // TODO: set a gulp task to deploy to prod and change this variable
-    var isDev      = true;  // false;
+    var isDev      = false;  // false;
     var enviroment = {};
 
     if ( isDev ) {
