@@ -16,7 +16,6 @@ var banner = ['/**',
   ' */'
 ].join('\n');
 
-
 gulp.task('minify-js', ['partials'], function() {
   return gulp.src([
     paths.node  + '/underscore/underscore.js',
@@ -26,7 +25,6 @@ gulp.task('minify-js', ['partials'], function() {
     paths.src   + '/assets/javascripts/satellizer.js',
     paths.bower + '/angular-bootstrap/ui-bootstrap-tpls.js',
     paths.bower + '/angular-loading-bar/build/loading-bar.js',
-    // 'client/app/libs/sweet-alert.js',
     paths.src   + '/app/app.js',
     paths.tmp   + '/partials/templateCacheHtml.js',
     paths.src   + '/app/utils/*.js',
@@ -38,7 +36,7 @@ gulp.task('minify-js', ['partials'], function() {
   ])
   .pipe($.concat('app.min.js'))
   .pipe($.ngAnnotate())
-  //.pipe($.uglify())
+  .pipe($.uglify())
   .pipe($.header( banner ))
   .pipe(gulp.dest( paths.dist ));
 });
@@ -48,9 +46,9 @@ gulp.task('minify-css', ['styles'], function() {
     paths.tmp + '/**/*.css',
     paths.bower + '/angular-loading-bar/build/loading-bar.css'
   ])
-    .pipe($.concat('styles.min.css'))
-    //.pipe($.csso())
-    .pipe(gulp.dest( paths.dist ));
+  .pipe($.concat('styles.min.css'))
+  .pipe($.csso())
+  .pipe(gulp.dest( paths.dist ));
 });
 
 gulp.task('html', function () {
@@ -62,17 +60,5 @@ gulp.task('images', function () {
   return gulp.src(paths.src + '/assets/images/*')
     .pipe(gulp.dest(paths.dist + '/images/'));
 });
-
-// gulp.task('fonts', function () {
-//   return gulp.src($.mainBowerFiles())
-//     .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
-//     .pipe($.flatten())
-//     .pipe(gulp.dest(paths.dist + '/fonts/'));
-// });
-
-// gulp.task('misc', function () {
-//   return gulp.src(paths.src + '/**/*.ico')
-//     .pipe(gulp.dest(paths.dist + '/'));
-// });
 
 gulp.task('build', ['minify-js', 'minify-css', 'html', 'images']);
