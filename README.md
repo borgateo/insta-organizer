@@ -3,6 +3,8 @@ Single-page webapp that pulls data from Instragram and help the user to organize
 
 Current version: 0.0.2
 
+![](https://dl.dropboxusercontent.com/u/1089758/insta-organizer.png)
+
 ## Features
 - As a user I can visualize the recent pictures (Wall section)
 - When I click on a pic, I can see a bigger picture, the comments, and there a call-to-action to "like" it.
