@@ -18,7 +18,7 @@ angular.module('instaOrganizer')
 
       Photo.prototype.update = function( data ) {
         this.flush();
-        this.photos = data.photos;
+        this.photos = data;
         return this;
       };
 

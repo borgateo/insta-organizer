@@ -5,7 +5,14 @@
 
 angular.module('instaOrganizer')
   .controller('HomeCtrl', 
-    function( $rootScope, $scope, $window, $auth, apiService ) {
+    function( 
+      $rootScope, 
+      $scope, 
+      $window, 
+      $auth, 
+      apiService,
+      Photo
+    ) {
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
@@ -26,9 +33,8 @@ angular.module('instaOrganizer')
       if ( !$auth.isAuthenticated() || !$rootScope.currentUser  ) {
         return;
       }
-      apiService.getFeed().success(function( data ) {
-        $scope.photos = data;
-      });
+      apiService.getFeed();
+      $scope.photos = Photo;
     };
 
     initialize();

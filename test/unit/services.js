@@ -1,3 +1,6 @@
+/*
+** test User model
+*/
 describe('User', function() {
 
   // Arrange
@@ -67,4 +70,43 @@ describe('User', function() {
 
   });
 });
+
+
+/*
+** test Photo model
+*/
+describe('Photo', function() {
+
+  // Arrange
+  var Photo;
+  beforeEach( module('instaOrganizer') );
+  beforeEach( module(function( $provide ) { 
+    photos = {}; 
+    $provide.value( 'photos', photos ); 
+  }));
+  beforeEach( inject(function( _Photo_ ) { 
+    Photo = _Photo_;
+  }));
+
+  // Assume
+  describe('Constructor', function() {
+    it('set up empty photo array', function() {
+      // Assert
+      expect( Photo.photos.length ).toBe(0);
+    }); 
+  });
+
+  describe('Update', function() {
+    it('should add element into photos elment', function() {
+      // Act
+      photos = [{id: 1}, {id: 2}, {id: 3}, {id: 4}];
+      // Assert
+      Photo.update( photos );
+      expect( Photo.photos.length ).toBe(4);
+    });
+  });
+});
+
+
+
 

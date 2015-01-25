@@ -1,13 +1,13 @@
+/**
+* controllers/signin.js
+*/
 var bcrypt  = require('bcryptjs');
 var request = require('request');
 var jwt     = require('jwt-simple');
 
 module.exports = function( app, auth, config, User ) {
-  /*
-   |--------------------------------------------------------------------------
-   | Sign in with Email
-   |--------------------------------------------------------------------------
-   */
+  
+  // Sign in with Email
   app.post('/auth/login', function( req, res ) {
     User.findOne({ email: req.body.email }, '+password', function( err, user ) {
       if ( !user ) {
@@ -28,11 +28,7 @@ module.exports = function( app, auth, config, User ) {
     });
   });
 
-  /*
-   |--------------------------------------------------------------------------
-   | Create Email and Password Account
-   |--------------------------------------------------------------------------
-   */
+  // Create Email and Password Account
   app.post('/auth/signup', function(req, res) {
     User.findOne({ email: req.body.email }, function(err, existingUser) {
       if (existingUser) {
@@ -57,11 +53,8 @@ module.exports = function( app, auth, config, User ) {
     });
   });
 
-  /*
-   |--------------------------------------------------------------------------
-   | Sign in with Instagram
-   |--------------------------------------------------------------------------
-   */
+  
+  // Sign in with Instagram
   app.post('/auth/instagram', function(req, res) {
     var accessTokenUrl = 'https://api.instagram.com/oauth/access_token';
 

@@ -13,7 +13,6 @@ angular.module('instaOrganizer')
     $timeout
   ) {
 
-    // console.log( 'currentUser', $rootScope.currentUser );
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };

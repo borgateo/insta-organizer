@@ -10,12 +10,17 @@ angular.module('instaOrganizer')
   .factory('apiService', function( 
     $http, 
     appConfig,
-    User
+    User,
+    Photo
   ) {
 
     var service = {
       getFeed: function() {
-        return $http.get( appConfig.env.server + '/api/feed' );
+        $http
+          .get( appConfig.env.server + '/api/feed')
+          .success(function( response ) {
+            Photo.update( response );
+          });
       },
       getFollows: function( id ) {
         $http
