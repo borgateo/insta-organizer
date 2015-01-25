@@ -148,3 +148,4 @@ If you want to create your instagram application and use your credentials, you c
 - I discovered that Instagram API allow only 20 actions per hour.
 - Follow action doesn't show if the request is pending (people have private Instagram accounts). 
 - The wall should load more pictures when scrolling down.
+- Create a dashboard with some infografics: %gender, top locations, # comments and other stats
