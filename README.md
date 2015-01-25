@@ -142,9 +142,9 @@ If you want to create your instagram application and use your credentials, you c
 
 
 ### TODO list
-- I want deploy the project to divshot and mongoLab to make it live.
-- Write more (unit and E2E) tests
-- Redis would be a good solution to cache the user actions and the requests
-- I discovered that Instagram API allow only 20 actions per hour
+- I want deploy the project to divshot and mongoLab to make it live. (WIP: http://development.insta-organizer.divshot.io/)
+- Write more (unit and E2E) tests.
+- Redis would be a good solution to cache the user actions and the requests.
+- I discovered that Instagram API allow only 20 actions per hour.
 - Follow action doesn't show if the request is pending (people have private Instagram accounts). 
-- The wall should load more pictures when scrolling down
+- The wall should load more pictures when scrolling down.
