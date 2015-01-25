@@ -7,14 +7,17 @@ Current version: 0.0.2
 
 ## Features
 - As a user I can visualize the recent pictures (Wall section)
-- When I click on a pic, I can see a bigger picture, the comments, and there a call-to-action to "like" it.
-- As a user I can visualize:
+- When I click on a pic, I can see:
+  - bigger picture
+  - comments, 
+  - call-to-action to "like" it.
+- As a user I can visualize (Followers section):
   - who follows me 
   - who is following me 
   - if someone follows me but I don't follow him/her
-  - if I follow someone but this person doens't follow me
+  - if I follow someone but this person doesn't follow me
 
-These last views allow me to 'follow' people that are following me,and 'unfollow' people that are not following me.
+These last views allow me to 'follow' people that are following me, and 'unfollow' people that are not following me.
 (Other 2 call-to-actions)
 
 ## Techy Features
@@ -37,24 +40,26 @@ These last views allow me to 'follow' people that are following me,and 'unfollow
 
 ## Getting Started
 
-To get you started you can simply clone the insta-organizer repository and install the dependencies:
+To get you started you can simply clone the insta-organizer repository and install the dependencies.
 
 ### Prerequisites
 
 You need git to clone the insta-organizer repository. You can get it from
-[http://git-scm.com/](http://git-scm.com/).
+[git-scm.com/](http://git-scm.com/).
 
-You must have node.js and its package manager (npm) installed. You can get them from [http://nodejs.org/](http://nodejs.org/).
+You must have node.js and its package manager (npm) installed. You can get them from [nodejs.org/](http://nodejs.org/).
 
-MongoDB must be installed as well. You can get it from [http://www.mongodb.org](http://www.mongodb.org/downloads)
+MongoDB must be installed as well. You can get it from [mongodb.org](http://www.mongodb.org/downloads)
 
-### Clone ng-wallet
+An instagram account :) [instagram.com](http://instagram.com/)
 
-Clone the insta-organizer
+### Clone ng-organizer
+
+Clone the insta-organizer:
 
 ```
-git clone https://github.com/borteo/insta-organizer.git
-cd insta-organizer
+$ git clone https://github.com/borteo/insta-organizer.git
+$ cd insta-organizer
 ```
 
 ### Install Dependencies
@@ -102,7 +107,7 @@ Firstly we have to build the application:
 $ gulp
 ```
 
-This command moves all the files into dist folder: `/client/dist`
+This command concatenates, uglifies, compress and moves all the files into the `dist` folder: `/client/dist`
 
 The simplest way to start the client is to start a HTTP Server with Python (default port 8000). 
 
@@ -117,6 +122,7 @@ At this point open browser and visit: `http://localhost:8000`
 ### Run tasks with gulp
 - Run `gulp watch` for live compiling SCSS and JS
 - Run `gulp build` for building
+You can find all the tasks in the `gulp` folder
 
 ### Unit test
 To test the models you can run:
@@ -127,15 +133,15 @@ $ npm test
 
 
 ### Instagram Token 
-This project is using a dummy application create ad hoc for it called insta-organizer-dev.
+This project is using a dummy application created ad hoc for it, called `insta-organizer-dev`.
 
 If you want to create your instagram application and use your credentials, you can change them here:
 
-- server/config/settings.js contains the `clientSecret`
-- client/config/appConfig contains the `clientId`
+- `server/config/settings.js` contains the `clientSecret`
+- `client/config/appConfig.js` contains the `clientId`
 
 
-### WIP
+### TODO list
 - I want deploy the project to divshot and mongoLab to make it live.
 - Write more (unit and E2E) tests
 - Redis would be a good solution to cache the user actions and the requests
