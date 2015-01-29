@@ -6,19 +6,18 @@ Current version: 0.0.2
 ![](https://dl.dropboxusercontent.com/u/1089758/insta-organizer.png)
 
 ## Features
-- As a user I can visualize the recent pictures (Wall section)
-- When I click on a pic, I can see:
-  - bigger picture
-  - comments, 
-  - call-to-action to "like" it.
-- As a user I can visualize (Followers section):
+- As a user I can visualize the recent pictures (Wall section):
+  - When I click on a pic, I can see:
+    - bigger picture
+    - comments, 
+    - call-to-action to "like" it
+- As a user I can visualize the relationships (Followers section):
   - who follows me 
   - who is following me 
   - if someone follows me but I don't follow him/her
+    - I can follow them back
   - if I follow someone but this person doesn't follow me
-
-These last views allow me to 'follow' people that are following me, and 'unfollow' people that are not following me.
-(Other 2 call-to-actions)
+    - I can unfollow them
 
 ## Techy Features
 
@@ -145,7 +144,7 @@ If you want to create your instagram application and use your credentials, you c
 - I want deploy the project to divshot and mongoLab to make it live. (WIP: http://development.insta-organizer.divshot.io/)
 - Write more (unit and E2E) tests.
 - Redis would be a good solution to cache the user actions and the requests.
-- I discovered that Instagram API allow only 20 actions per hour.
+- I discovered that Instagram API allow only 20 actions per hour. (is there somehow a way to get more requests?)
 - Follow action doesn't show if the request is pending (people have private Instagram accounts). 
-- The wall should load more pictures when scrolling down.
+- The wall should load more pictures when scrolling down. (not so much value on this - the user can go to Instagram)
 - Create a dashboard with some infografics: %gender, top locations, # comments and other stats
